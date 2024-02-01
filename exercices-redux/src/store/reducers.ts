@@ -1,4 +1,6 @@
+import { createReducer } from '@reduxjs/toolkit';
 import { RootState } from './types';
+import { addTodo, updateNewTodo } from './actions';
 
 const initialState: RootState = {
   todos: {
@@ -11,25 +13,12 @@ const initialState: RootState = {
   },
 };
 
-export function reducer(state = initialState, action: any) {
-  switch (action.type) {
-    case 'UPDATE_NEW_TODO':
-      return {
-        ...state,
-        todos: {
-          ...state.todos,
-          newTodo: action.payload,
-        },
-      };
-    case 'ADD_TODO':
-      return {
-        ...state,
-        todos: {
-          ...state.todos,
-          items: [...state.todos.items, action.payload],
-        },
-      };
-    default:
-      return state;
-  }
-}
+export const reducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(updateNewTodo, (state, action) => {
+      state.todos.newTodo = action.payload;
+    })
+    .addCase(addTodo, (state, action) => {
+      state.todos.items.push(action.payload);
+    });
+});

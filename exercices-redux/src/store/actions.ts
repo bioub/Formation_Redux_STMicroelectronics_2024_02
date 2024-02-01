@@ -1,17 +1,14 @@
-export function updateNewTodo(payload: string) {
-  return {
-    type: 'UPDATE_NEW_TODO',
-    payload,
-  };
-}
+import { PrepareAction, createAction } from "@reduxjs/toolkit";
+import { Todo } from "./types";
 
-export function addTodo(title: string) {
+export const updateNewTodo = createAction<string>('UPDATE_NEW_TODO');
+
+export const addTodo = createAction<PrepareAction<Todo>>('ADD_TODO', (title: string) => {
   return {
-    type: 'ADD_TODO',
     payload: {
       id: Math.random(),
       title,
       completed: false,
     },
-  };
-}
+  }
+});
