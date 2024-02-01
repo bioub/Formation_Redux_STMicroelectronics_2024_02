@@ -54,4 +54,6 @@ Dans `src/actions.ts` remplacer les actions creators écrit manuellement par des
 Dans `src/reducers.ts` remplacer le reducer par `createReducer`, simplifier le code immuable en l'écrivant de façon muable et laisser Immer faire la transformation.
 
 
+## Slices
 
+En vous inspirant de l'exemple 04-redux-toolkit-slices et de la slide 71 pour addTodo, fusionner les fichiers actions, reducers et selector en un seul fichier slices.ts (en utilisant createSlice)
