@@ -31,6 +31,13 @@ const todosSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(addTodo, (state, action: PayloadAction<Todo>) => {
       state.items.push(action.payload)
+      // return {
+      //   ...state,
+      //   items: [
+      //     ...state.items,
+      //     action.payload,
+      //   ]
+      // }
     });
   }
 });
