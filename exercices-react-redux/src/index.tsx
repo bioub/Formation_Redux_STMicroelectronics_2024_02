@@ -6,14 +6,19 @@ import App from './components/App';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { todosReducer } from './store/slices/todos-slice';
+import { usersReducer } from './store/slices/users-slice';
 // import { StrictMode } from 'react';
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   // <StrictMode>
-    <Provider store={configureStore({ reducer: { todos: todosReducer } })}>
-      <App />
-    </Provider>
+  <Provider
+    store={configureStore({
+      reducer: { todos: todosReducer, users: usersReducer },
+    })}
+  >
+    <App />
+  </Provider>
   // </StrictMode>
 );

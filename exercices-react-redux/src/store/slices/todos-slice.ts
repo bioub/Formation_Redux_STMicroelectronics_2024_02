@@ -1,7 +1,8 @@
 import { createAction, createSlice, PayloadAction, PrepareAction } from "@reduxjs/toolkit";
-import { Todo, TodoSlice } from "../types";
+import { TodosSlice } from "../types";
+import { Todo } from "../../todos/types";
 
-const initialTodosSliceState: TodoSlice = {
+const initialTodosSliceState: TodosSlice = {
   newTodo: 'XYZ',
   items: [
     { id: 1, title: 'ABC', completed: true },

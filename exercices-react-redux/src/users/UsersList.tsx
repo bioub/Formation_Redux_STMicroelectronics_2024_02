@@ -2,18 +2,19 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { getAllUsers } from './api';
-import { User } from './types';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUsers, usersSelector } from '../store/slices/users-slice';
 
 export default function UsersList() {
-  const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(false);
+  const { items: users, loading, errorMessage } = useSelector(usersSelector);
+  const dispatch = useDispatch<any>();
 
   useEffect(() => {
-    getAllUsers()
-      .then((data) => setUsers(data))
-      .catch((err) => setErrorMessage(err.message))
-      .finally(() => setLoading(false));
+    dispatch(fetchUsers());
+    // getAllUsers()
+    //   .then((data) => setUsers(data))
+    //   .catch((err) => setErrorMessage(err.message))
+    //   .finally(() => setLoading(false));
   }, [getAllUsers]);
 
   return (
