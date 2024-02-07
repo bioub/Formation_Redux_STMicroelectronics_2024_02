@@ -1,7 +1,18 @@
-import { useState } from "react";
+// import { useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { nameSelector, updateName } from "./slices";
 
 function Helloworld() {
-  const [name, setName] = useState('Romain');
+  console.log('Helloworld renders');
+  
+  // const [name, setName] = useState('Romain');
+  const name = useSelector(nameSelector);
+  const dispatch = useDispatch();
+
+  function setName(val: string) {
+    dispatch(updateName(val))
+  }
 
   return (
     <div className="Helloworld">

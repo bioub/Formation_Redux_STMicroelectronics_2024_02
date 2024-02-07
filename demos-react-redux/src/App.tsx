@@ -1,15 +1,21 @@
-import { useState } from 'react'
+
 import './App.css'
 import Helloworld from './Helloworld'
+import { useDispatch, useSelector } from 'react-redux'
+import { incrementLikes, likesSelector } from './slices'
 
 function App() {
-  const [count, setCount] = useState(0)
+  console.log('App renders');
+  
+  // const [count, setCount] = useState(0)
+  const count = useSelector(likesSelector);
+  const dispatch = useDispatch();
 
   return (
     <>
       <h1>Demos React Redux</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => dispatch(incrementLikes())}>
           count is {count}
         </button>
       </div>
